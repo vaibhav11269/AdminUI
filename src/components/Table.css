@@ -1,0 +1,79 @@
+.loading-section {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.table-manual {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  padding: 4px;
+}
+table {
+  margin-left: auto;
+  margin-right: auto;
+}
+td {
+  padding: 0 1rem;
+}
+.input {
+  width: 100%;
+  border: none;
+  padding: 0 0.5rem;
+}
+.input:focus,
+:hover,
+:active {
+  outline: none;
+}
+.search {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 40vw;
+  border: 1px solid;
+  border-radius: 2px;
+  margin: 0.5rem 0;
+}
+.actions {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+@media screen {
+}
+.actions:hover {
+  cursor: pointer;
+}
+.message {
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  z-index: 1;
+}
+.selected {
+  background-color: grey;
+}
+.footer {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+}
+.delete-selected-btn {
+  background-color: red;
+  color: aliceblue;
+  align-self: flex-start;
+  border-radius: 2rem;
+  border: 1px solid black;
+}
+
+/* @media screen and (max-width: 700px) {
+  td {
+    word-wrap: break-word !important;
+  }
+} */
