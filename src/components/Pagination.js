@@ -21,7 +21,7 @@ const Pagination = ({
     <nav className="d-flex justify-content-center">
       <ul className="pagination modal-3 pagination-flush">
         <li className={`page-item`}>
-          <a className="icon-section" onClick={() => paginate(1)} href="!#">
+          <a className="icon-section" onClick={() => paginate(1)} href="#">
             <KeyboardDoubleArrowLeftIcon
               fontSize="small"
               className={`${current === 1 ? "text-muted" : ""}`}
@@ -29,7 +29,7 @@ const Pagination = ({
           </a>
         </li>
         <li className="page-item">
-          <a className="icon-section" onClick={prevPage} href="!#">
+          <a className="icon-section" onClick={prevPage} href="#">
             <ArrowBackIosNewIcon
               fontSize="small"
               className={`${current === 1 ? "text-muted" : ""}`}
@@ -41,13 +41,13 @@ const Pagination = ({
             key={number}
             className={number === current ? "page-item active" : "page-item"}
           >
-            <a className="page-link" href="!#" onClick={() => paginate(number)}>
+            <a className="page-link" href="#" onClick={() => paginate(number)}>
               {number}
             </a>
           </li>
         ))}
         <li className="page-item">
-          <a className="icon-section" onClick={nextPage} href="!#">
+          <a className="icon-section" onClick={nextPage} href="#">
             <ArrowForwardIosIcon
               fontSize="small"
               className={`${
@@ -64,7 +64,7 @@ const Pagination = ({
           <a
             className="icon-section"
             onClick={() => paginate(pageNumbers[pageNumbers.length - 1])}
-            href="!#"
+            href="#"
           >
             <KeyboardDoubleArrowRightIcon
               fontSize="small"
@@ -73,9 +73,6 @@ const Pagination = ({
               }`}
             />
           </a>
-        </li>
-        <li>
-          <i className="bi bi-search"></i>
         </li>
       </ul>
     </nav>

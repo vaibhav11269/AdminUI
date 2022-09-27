@@ -101,14 +101,27 @@ function Table({ users, setUsers, loading }) {
   };
   const multiDelete = () => {
     if (window.confirm("Are you sure you want to delete this?")) {
-      const newRowData = users.filter((data) => !selectedUsers.includes(data));
-      setUsers(newRowData);
-      let userLength = newRowData.length;
-      let totalPages = Math.ceil(userLength / rowsPerPage);
-      if (currentPage > totalPages - 1) paginate(totalPages);
-      else paginate(currentPage);
-      setShowFooter(false);
-      checkAll.current.checked = false;
+      if(searchResults.length>0){
+        const newRowData = searchResults.filter((data) => !selectedUsers.includes(data));
+        setUsers(users.filter((data) => !selectedUsers.includes(data)));
+        if(newRowData.length>0){
+          setSearchResults(newRowData);
+        }else{
+          setSearchResults([]);
+        }
+        setShowFooter(false);
+        checkAll.current.checked = false;
+      }
+      else{
+        const newRowData = users.filter((data) => !selectedUsers.includes(data));
+        setUsers(newRowData);
+        let userLength = newRowData.length;
+        let totalPages = Math.ceil(userLength / rowsPerPage);
+        if (currentPage > totalPages - 1) paginate(totalPages);
+        else paginate(currentPage);
+        setShowFooter(false);
+        checkAll.current.checked = false;
+      }
     }
   };
   //---------------RowCheckBox----------------
@@ -128,11 +141,20 @@ function Table({ users, setUsers, loading }) {
   const selectAll = (e) => {
     checkAll.current.checked = e.target.checked;
     let isSelected = e.target.checked;
-    let currentlySelected = [...selectedUsers];
-    for (let index = rowsPerPage; index > 0; index--) {
-      if (currentPage * rowsPerPage - index < users.length)
-        currentlySelected.push(users[currentPage * rowsPerPage - index]);
+    let currentlySelected;
+    if(searchText.length> 0 && searchResults.length>0){
+        currentlySelected=[];
+        for(let index=0;index<searchResults.length;index++){
+          currentlySelected.push(searchResults[index]);
+        }
     }
+    else{
+      currentlySelected = [...selectedUsers];
+      for (let index = rowsPerPage; index > 0; index--) {
+        if (currentPage * rowsPerPage - index < users.length)
+          currentlySelected.push(users[currentPage * rowsPerPage - index]);
+      }
+  }
     currentlySelected.forEach((user) => {
       user.isChecked = isSelected;
     });

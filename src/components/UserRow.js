@@ -5,7 +5,7 @@ import SaveIcon from "@mui/icons-material/Save";
 import "./Table.css";
 
 const UserRow = ({ data, handleDelete, handleEdit, handleCheck }) => {
-  const [canEdit, setCanEdit] = useState(false); 
+  const [canEdit, setCanEdit] = useState(false);
   const [currentValue, setCurrentValue] = useState(data);
 
   const handleChange = (e) => {
@@ -18,12 +18,25 @@ const UserRow = ({ data, handleDelete, handleEdit, handleCheck }) => {
   };
 
   const handleSave = () => {
+    if (!validation(currentValue)) return;
     setCanEdit(false);
     handleEdit(currentValue);
-  }
+  };
+  const validation = (data) => {
+    if (data.name.length === 0) {
+      alert("Username is a required field");
+      return false;
+    } else if (data.email.length === 0) {
+      alert("Email is a required field");
+      return false;
+    } else if (data.role.length === 0) {
+      alert("Role is a required field");
+      return false;
+    } else return true;
+  };
   // currentValue["isChecked"]= data.isChecked;
   return (
-    <tr key={data.id} className={data.isChecked ? "selected" : ""} >
+    <tr key={data.id} className={data.isChecked ? "selected" : ""}>
       <td>
         <input
           type="checkbox"
@@ -71,7 +84,7 @@ const UserRow = ({ data, handleDelete, handleEdit, handleCheck }) => {
         {canEdit === false ? (
           <EditIcon onClick={performEdit} />
         ) : (
-          <SaveIcon onClick={handleSave}/>
+          <SaveIcon onClick={handleSave} />
         )}
         <DeleteIcon onClick={() => handleDelete(data.id)} />
       </td>
