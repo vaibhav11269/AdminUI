@@ -12,7 +12,6 @@ function Table({ users, setUsers, loading }) {
   const [showFooter, setShowFooter] = useState(false);
   const [selectedUsers, setSelectedUsers] = useState([]);
   const checkAll = useRef(false);
-  const [open, setOpen] = useState(false);
 
   // ------------ Pagination ---------
   let indexOfLastRow = currentPage * rowsPerPage;
