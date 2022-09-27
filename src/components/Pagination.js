@@ -20,14 +20,20 @@ const Pagination = ({
   return (
     <nav className="d-flex justify-content-center">
       <ul className="pagination modal-3 pagination-flush">
-        <li className={`page-item ${current === 1 ? "disable" : ""}`}>
+        <li className={`page-item`}>
           <a className="icon-section" onClick={() => paginate(1)} href="!#">
-            <KeyboardDoubleArrowLeftIcon fontSize="small" />
+            <KeyboardDoubleArrowLeftIcon
+              fontSize="small"
+              className={`${current === 1 ? "text-muted" : ""}`}
+            />
           </a>
         </li>
         <li className="page-item">
           <a className="icon-section" onClick={prevPage} href="!#">
-            <ArrowBackIosNewIcon fontSize="small" />
+            <ArrowBackIosNewIcon
+              fontSize="small"
+              className={`${current === 1 ? "text-muted" : ""}`}
+            />
           </a>
         </li>
         {pageNumbers.map((number) => (
@@ -42,7 +48,12 @@ const Pagination = ({
         ))}
         <li className="page-item">
           <a className="icon-section" onClick={nextPage} href="!#">
-            <ArrowForwardIosIcon fontSize="small" />
+            <ArrowForwardIosIcon
+              fontSize="small"
+              className={`${
+                current === pageNumbers.length ? "text-muted" : ""
+              }`}
+            />
           </a>
         </li>
         <li
@@ -55,7 +66,12 @@ const Pagination = ({
             onClick={() => paginate(pageNumbers[pageNumbers.length - 1])}
             href="!#"
           >
-            <KeyboardDoubleArrowRightIcon fontSize="small" />
+            <KeyboardDoubleArrowRightIcon
+              fontSize="small"
+              className={`${
+                current === pageNumbers.length ? "text-muted" : ""
+              }`}
+            />
           </a>
         </li>
         <li>
