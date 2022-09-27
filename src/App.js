@@ -1,3 +1,4 @@
+import config from './conf/config.js';
 import { useEffect, useState } from "react";
 import "./App.css";
 import axios from "axios";
@@ -13,7 +14,7 @@ function App() {
     setLoading(true);
     try {
       const response = await axios.get(
-        "https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json"
+        config.backendEndpoint
       );
       setLoading(false);
       setUsers(response.data);
@@ -21,6 +22,7 @@ function App() {
       setLoading(false);
       console.log(error);
     }
+    return users;
   };
   return (
     <>

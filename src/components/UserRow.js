@@ -5,7 +5,7 @@ import SaveIcon from "@mui/icons-material/Save";
 import "./Table.css";
 
 const UserRow = ({ data, handleDelete, handleEdit, handleCheck }) => {
-  const [canEdit, setCanEdit] = useState(false);
+  const [canEdit, setCanEdit] = useState(false); 
   const [currentValue, setCurrentValue] = useState(data);
 
   const handleChange = (e) => {
@@ -78,5 +78,5 @@ const UserRow = ({ data, handleDelete, handleEdit, handleCheck }) => {
     </tr>
   );
 };
-// handleEdit(data.id)
+
 export default UserRow;
